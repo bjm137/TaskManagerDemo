@@ -1,0 +1,28 @@
+<div class="header-menu">
+  <p-toolbar styleClass="toolbar-header">
+    <!---- Start ---->
+    <ng-template pTemplate="start">
+      <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" />
+      <div class="app-title">{{ title }}</div>
+    </ng-template>
+
+    <!---- center ---->
+    <ng-template pTemplate="center">
+      <a routerLink="/"
+         routerLinkActive="active">
+        <button pButton>
+          <i class="pi pi-home text-2xl"></i>
+        </button>
+      </a>
+    </ng-template>
+
+    <!---- Start ---->
+    <ng-template pTemplate="end">
+      <button pButton
+              (click)="goCreateTask()">
+        <span>Créer <i class="pi pi-plus"></i></span>
+      </button>
+    </ng-template>
+  </p-toolbar>
+
+</div>

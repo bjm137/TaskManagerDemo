@@ -1,0 +1,42 @@
+<div class="app-detail">
+  <div class="blocs-container">
+    <div class="detail-bloc">
+      <label for="label">Titre</label>
+      <input pInputText
+             [(ngModel)]="task.label" />
+    </div>
+
+    <div class="detail-bloc">
+      <label for="label">Description</label>
+      <textarea rows="5"
+                cols="100"
+                pInputTextarea
+                [(ngModel)]="task.description">
+    </textarea>
+    </div>
+
+    <div class="detail-bloc">
+      <label for="label">Statut</label>
+      <p-inputSwitch [(ngModel)]="task.completed" />
+    </div>
+  </div>
+
+  <div class="actions-buttons">
+    <button pButton
+            *ngIf="isCreation; else updateDeleteButtons"
+            label="Enregistrer"
+            (click)="create()"></button>
+
+    <!-- Affichage des boutons Supprimer et Mettre à jour si isCreation est false -->
+    <ng-template #updateDeleteButtons>
+      <button pButton
+              label="Supprimer"
+              severity="danger"
+              (click)="deleteTask()"></button>
+      <button pButton
+              label="Mettre à jour"
+              (click)="update()"></button>
+    </ng-template>
+  </div>
+
+</div>
