@@ -1,0 +1,17 @@
+.header-menu {
+  .app-title {
+    font-size: large;
+    font-weight: bold;
+  }
+}
+
+::ng-deep {
+  .toolbar-header {
+    border-radius: "3rem";
+    background-image: linear-gradient(
+      to right,
+      var(--bluegray-200),
+      var(--bluegray-500)
+    );
+  }
+}

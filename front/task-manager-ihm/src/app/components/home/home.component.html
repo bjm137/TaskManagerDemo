@@ -1,0 +1,56 @@
+<div class="app-home">
+  <p-table [value]="tasks"
+           [paginator]="true"
+           [rows]="10"
+           [rowsPerPageOptions]="[5, 10, 20, 50]">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="label">
+          Titre
+          <p-sortIcon field="label" />
+        </th>
+        <th pSortableColumn="completed">
+          Statut
+          <p-sortIcon field="completed" />
+        </th>
+        <th>Options</th>
+      </tr>
+      <tr>
+        <th style="width: 30%;">
+          <p-columnFilter type="text"
+                          field="label"
+                          placeholder="Filtrer par titre" />
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body"
+                 let-task>
+      <tr class="task-tr">
+        <td>{{ task.label }}</td>
+        <!-- <td>{{ task.completed | status}}</td> -->
+        <td><p-tag [value]="task.completed | status"
+                 [severity]="task.completed ? 'success' : 'danger'" /></td>
+
+        <td class="task-options">
+          <button pButton
+                  title="Modifier la tâche"
+                  icon="pi pi-pencil"
+                  (click)="editTask(task.id)"></button>
+          <button pButton
+                  title="Supprimer la tâche"
+                  icon="pi pi-trash"
+                  class="p-button-danger"
+                  (click)="deleteTask(task)"></button>
+          <button pButton
+                  title="Marquer comme {{ task.completed ? 'non terminée' : 'terminée' }}"
+                  [icon]="task.completed ? 'pi pi-times-circle' :'pi pi-check-circle'"
+                  (click)="updateState(task)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
